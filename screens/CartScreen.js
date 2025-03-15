@@ -1,15 +1,39 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import BackButton from '../components/BackButton';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useStripe } from "@stripe/stripe-react-native";
 
 const CartScreen = () => {
+    const { initPaymentSheet, presentPaymentSheet } = useStripe();
+    const [loading, setLoading] = useState(false);
+
+    const fetchPaymentIntent = async () => {
+        try {
+            const response = await fetch("https://your-backend.com/create-payment-intent", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ amount: 2000 }), // Example: $20
+            });
+            const { clientSecret } = await response.json();
+            return clientSecret;
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const handlePayment = async () => {
+        setLoading(true);
+        const clientSecret = await fetchPaymentIntent();
+        if (!clientSecret) return;
+        const { error } = await initPaymentSheet({ paymentIntentClientSecret: clientSecret });
+        if (!error) await presentPaymentSheet();
+        setLoading(false);
+    };
+
     return (
         <View style={styles.container}>
-            <BackButton />
             <Text style={styles.title}>Your Cart</Text>
-            <Text style={styles.info}>Your cart is currently empty.</Text>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Browse Restaurants!</Text>
+            <TouchableOpacity style={styles.payButton} onPress={handlePayment} disabled={loading}>
+                <Text style={styles.payText}>{loading ? "Processing..." : "Checkout with Stripe"}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -17,35 +41,9 @@ const CartScreen = () => {
 
 export default CartScreen;
 
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#659561',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    title: {
-        fontSize: 24,
-        color: '#fff',
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    info: {
-        fontSize: 16,
-        color: '#ddd',
-        marginBottom: 20,
-    },
-    button: {
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        padding: 10,
-        borderRadius: 30,
-        width: 200,
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-    },
+    container: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#659561" },
+    title: { fontSize: 28, fontWeight: "bold", color: "#fff", marginBottom: 20 },
+    payButton: { backgroundColor: "#fff", padding: 12, borderRadius: 10 },
+    payText: { fontSize: 18, fontWeight: "bold", color: "#659561" },
 });

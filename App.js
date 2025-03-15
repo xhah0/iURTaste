@@ -9,6 +9,9 @@ import FavoritesScreen from './screens/FavoritesScreen';
 import CartScreen from './screens/CartScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import EditProfileScreen from './screens/EditProfileScreen';
+import BurgerMenuScreen from './screens/BurgerMenuScreen';
+import PastaMenuScreen from './screens/PastaMenuScreen';
+import SushiMenuScreen from './screens/SushiMenuScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,32 +32,47 @@ export default function App() {
                 <Stack.Screen
                     name="MainScreen"
                     component={MainScreen}
-                    options={{ headerShown: false, gestureEnabled: false }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="ProfileScreen"
                     component={ProfileScreen}
-                    options={{ headerShown: false, gestureEnabled: true }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="FavoritesScreen"
                     component={FavoritesScreen}
-                    options={{ headerShown: false, gestureEnabled: true }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="CartScreen"
                     component={CartScreen}
-                    options={{ headerShown: false, gestureEnabled: true }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="SettingsScreen"
                     component={SettingsScreen}
-                    options={{ headerShown: false, gestureEnabled: true }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="EditProfileScreen"
                     component={EditProfileScreen}
-                    options={{ headerShown: false, gestureEnabled: true }}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="BurgerMenuScreen"
+                    component={BurgerMenuScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="PastaMenuScreen"
+                    component={PastaMenuScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="SushiMenuScreen"
+                    component={SushiMenuScreen}
+                    options={{ headerShown: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
