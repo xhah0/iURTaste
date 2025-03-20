@@ -149,10 +149,12 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     restaurantCard: {
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
         padding: 12,
         margin: 5,
         borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#FFF',
         alignItems: "center",
         width: '47%',
         elevation: 3,

@@ -11,8 +11,8 @@ const app = express();
 const server = http.createServer(app); // Create an HTTP server
 const io = socketIo(server, { cors: { origin: "*" } }); // Enable WebSockets
 
-const restaurantRoutes = require('./routes/restaurant');
-const menuRoutes = require('./routes/menu');
+// const restaurantRoutes = require('./routes/restaurant');
+// const menuRoutes = require('./routes/menu');
 const authRoutes = require('./routes/auth');
 const orderRoutes = require('./routes/order')(io); // Pass io to routes
 const paymentRoutes = require('./routes/payment');

@@ -4,42 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/iURTaste.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/adminController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/authController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/orderController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/restaurantController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/adminMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/authMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/roleMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Driver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Restaurants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Review.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/menuReview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/paymentController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/delivery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/protectedRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/restaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/review.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/services/notificationService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/utils/sendEmail.js" afterDir="false" />
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="BackEnd First Draft">
+      <change afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-delivery-backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/food-delivery-backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/food-delivery-backend/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food-delivery-backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/food-delivery-backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/MainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MainScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignupScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignupScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,16 +30,29 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ekoci22&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/xhah0/iURTaste.git&quot;,
+    &quot;accountId&quot;: &quot;0e954fe4-a90f-41ad-98db-2578b9d039ff&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2uP1mklSdKUvjYOkkY9eWbdLgaG" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -71,6 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Node.js.SignupScreen.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -104,11 +98,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742135559578</updated>
-      <workItem from="1742135561492" duration="7605000" />
+      <workItem from="1742135561492" duration="7948000" />
+      <workItem from="1742318358165" duration="195000" />
+      <workItem from="1742337652714" duration="1016000" />
+      <workItem from="1742380571138" duration="334000" />
+      <workItem from="1742419277539" duration="9769000" />
     </task>
+    <task id="LOCAL-00001" summary="BackEnd First Draft">
+      <option name="closed" value="true" />
+      <created>1742164372093</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742164372093</updated>
+    </task>
+    <task id="LOCAL-00002" summary="BackEnd First Draft">
+      <option name="closed" value="true" />
+      <created>1742164395495</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742164395495</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Stripe and restorants commit" />
+    <MESSAGE value="BackEnd First Draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="BackEnd First Draft" />
   </component>
 </project>

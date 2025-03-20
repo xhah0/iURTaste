@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Google from 'expo-auth-session/providers/google';
+import axios from 'axios';
+
 
 const LoginScreen = () => {
     const [username, setUsername] = useState('');
@@ -22,14 +24,38 @@ const LoginScreen = () => {
         }
     }, [response]);
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (!username.includes('@')) {
             setErrorMessage('Please enter a valid email address.');
             return;
         }
         setErrorMessage('');
-        navigation.navigate('MainScreen');
+        try {
+            const response = await axios.post("http://192.168.0.144:5000/api/auth/login", {
+                username,
+                password,
+            });
+
+            if (response.status === 200) {
+                alert('Login successful');
+                navigation.navigate('MainScreen');
+            }
+        } catch (error) {
+            if (error.response) {
+                const message = error.response.status;
+                if (message === 404) {
+                    alert("Username does not exist.");
+                } else if (message === 401) {
+                    alert("Incorrect password.");
+                } else {
+                    alert("An error occurred. Please try again.");
+                }
+            } else {
+                alert("Network error. Please check your connection.");
+            }
+        }
     };
+
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>

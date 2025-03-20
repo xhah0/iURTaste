@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingVi
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import axios from 'axios';
 
 const SignupScreen = () => {
     const [email, setEmail] = useState('');
@@ -12,13 +13,28 @@ const SignupScreen = () => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const navigation = useNavigation();
 
-    const handleSignup = () => {
+    const handleSignup = async () => {
         if (!email.includes('@')) {
             alert('Please enter a valid email address.');
             return;
         }
-        alert('Signup successful!');
-        navigation.navigate('MainScreen');
+        try{
+            const response = await axios.post("http://192.168.0.144:5000/api/auth/signup",{
+                    name: username,
+                    username,
+                    email,
+                    password,
+                    birthday
+            });
+
+            if (response.status ===201) {
+                alert("Signup successful");
+                navigation.navigate("MainScreen");
+            }
+        }catch(error){
+            console.error("Error signing up", error);
+            alert("Signup failed. Please try again");
+        }
     };
 
     return (
