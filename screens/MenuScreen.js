@@ -21,17 +21,21 @@ const MenuScreen = () => {
         }));
     };
 
-    // Remove item from cart
+    // Remove item from cart (using an immutable update)
     const removeFromCart = (itemId) => {
         setCart((prevCart) => {
             if (!prevCart[itemId]) return prevCart;
-            const updatedCart = { ...prevCart };
-            if (updatedCart[itemId].quantity > 1) {
-                updatedCart[itemId].quantity -= 1;
+            const currentItem = prevCart[itemId];
+            if (currentItem.quantity > 1) {
+                return {
+                    ...prevCart,
+                    [itemId]: { ...currentItem, quantity: currentItem.quantity - 1 },
+                };
             } else {
+                const updatedCart = { ...prevCart };
                 delete updatedCart[itemId];
+                return updatedCart;
             }
-            return updatedCart;
         });
     };
 
@@ -43,15 +47,18 @@ const MenuScreen = () => {
     // Get total items count
     const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
 
+    // Get total price (ensure item.price is converted correctly)
+    const totalPrice = Object.values(cart).reduce((sum, item) => {
+        const price = parseFloat(
+            typeof item.price === "string" ? item.price.replace(/[^0-9.-]+/g, "") : item.price
+        );
+        return sum + (price * item.quantity);
+    }, 0).toFixed(2);
+
     return (
         <SafeAreaView style={styles.container}>
-            {/* Back Button */}
             <BackButton onPress={() => navigation.goBack()} />
-
-            {/* Restaurant Title */}
             <Text style={styles.title}>{restaurantName} Menu</Text>
-
-            {/* Menu List */}
             <FlatList
                 data={menuItems}
                 keyExtractor={(item) => item.id}
@@ -75,11 +82,12 @@ const MenuScreen = () => {
                     </View>
                 )}
             />
-
-            {/* Cart Button (Only shows if items are added) */}
             {totalItems > 0 && (
                 <TouchableOpacity style={styles.cartFloatingButton} onPress={handleGoToCart}>
-                    <Text style={styles.cartText}>🛒 View Cart ({totalItems})</Text>
+                    <View style={styles.cartInfo}>
+                        <Text style={styles.cartIconText}>🛒 {totalItems} Items</Text>
+                        <Text style={styles.cartTotalText}> {totalPrice}ALL</Text>
+                    </View>
                 </TouchableOpacity>
             )}
         </SafeAreaView>
@@ -103,7 +111,7 @@ const styles = StyleSheet.create({
         marginTop: 13,
     },
     listContainer: {
-        paddingBottom: 100, // Prevents cut-off when cart button appears
+        paddingBottom: 100,
     },
     menuItem: {
         flexDirection: "row",
@@ -166,7 +174,8 @@ const styles = StyleSheet.create({
         left: 20,
         right: 20,
         backgroundColor: "#fff",
-        padding: 15,
+        paddingVertical: 15,
+        paddingHorizontal: 20,
         borderRadius: 30,
         alignItems: "center",
         shadowColor: "#000",
@@ -174,7 +183,17 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 5,
     },
-    cartText: {
+    cartInfo: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%",
+    },
+    cartIconText: {
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "#659561",
+    },
+    cartTotalText: {
         fontSize: 18,
         fontWeight: "bold",
         color: "#659561",

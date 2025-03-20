@@ -51,9 +51,16 @@ const CartScreen = () => {
         saveCartToStorage(updatedCart);
     };
 
-    // Calculate Total Price
+    // Calculate Total Price by converting any price string to a number
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+        return cartItems.reduce((total, item) => {
+            const price = parseFloat(
+                typeof item.price === "string"
+                    ? item.price.replace(/[^0-9.-]+/g, "")
+                    : item.price
+            );
+            return total + price * item.quantity;
+        }, 0);
     };
 
     // Stripe Payment Handling
@@ -113,17 +120,19 @@ const CartScreen = () => {
                                 <Image source={item.image} style={styles.image} />
                                 <View style={styles.details}>
                                     <Text style={styles.itemName}>{item.name}</Text>
-                                    <Text style={styles.price}>{item.price} x {item.quantity}</Text>
+                                    <Text style={styles.price}>
+                                        {item.price} x {item.quantity}
+                                    </Text>
                                 </View>
                                 <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.removeButton}>
-                                    <Text style={styles.removeText}>Remove</Text>
+                                    <Text style={styles.removeText}>-</Text>
                                 </TouchableOpacity>
                             </View>
                         )}
                     />
 
                     {/* Total Price Display */}
-                    <Text style={styles.totalPrice}>Total: ${calculateTotal().toFixed(2)}</Text>
+                    <Text style={styles.totalPrice}>Total: {calculateTotal().toFixed(2)}ALL</Text>
 
                     {/* Payment Selection Buttons */}
                     <View style={styles.paymentOptions}>
@@ -141,7 +150,7 @@ const CartScreen = () => {
                         </TouchableOpacity>
                     </View>
 
-                    {/* Checkout Button */}
+                    {/* Checkout Button with style similar to the "View Cart" button */}
                     <TouchableOpacity
                         style={styles.checkoutButton}
                         onPress={selectedPayment === "stripe" ? handleStripePayment : handleCashPayment}
@@ -243,15 +252,20 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#659561",
     },
+    // Updated checkoutButton style to mimic the MenuScreen "View Cart" button
     checkoutButton: {
-        backgroundColor: "#4CAF50",
-        padding: 12,
-        borderRadius: 10,
+        backgroundColor: "#fff",
+        padding: 15,
+        borderRadius: 30,
         alignItems: "center",
+        shadowColor: "#000",
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 5,
     },
     checkoutText: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#659561",
     },
 });

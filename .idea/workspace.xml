@@ -4,42 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/iURTaste.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/adminController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/authController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/orderController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/restaurantController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/controllers/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/adminMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/authMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/middleware/roleMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Driver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Restaurants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/Review.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/models/menuReview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/paymentController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/delivery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/protectedRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/restaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/review.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/routes/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/services/notificationService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food-delivery-backend/utils/sendEmail.js" afterDir="false" />
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="Fourth front push, changed the total made the menus and everything in cart screen prettier.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CartScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/MenuScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MenuScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/menus.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/menus.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +27,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;xhah0&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/xhah0/iURTaste&quot;,
+    &quot;accountId&quot;: &quot;71de4eef-7d5c-4ef7-8ef2-b0318e9eeded&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2uP1mklSdKUvjYOkkY9eWbdLgaG" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -80,7 +63,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,7 +75,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
       </set>
     </attachedChunks>
   </component>
@@ -105,10 +88,27 @@
       <option name="presentableId" value="Default" />
       <updated>1742135559578</updated>
       <workItem from="1742135561492" duration="7605000" />
+      <workItem from="1742457944334" duration="1420000" />
+      <workItem from="1742464375765" duration="2081000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fourth front push, changed the total made the menus and everything in cart screen prettier." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fourth front push, changed the total made the menus and everything in cart screen prettier." />
   </component>
 </project>
