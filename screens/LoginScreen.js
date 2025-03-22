@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingVi
 import { useNavigation } from '@react-navigation/native';
 import * as Google from 'expo-auth-session/providers/google';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const LoginScreen = () => {
@@ -37,6 +38,9 @@ const LoginScreen = () => {
             });
 
             if (response.status === 200) {
+                const user = response.data.user;
+                await AsyncStorage.setItem('profileName', user.name);
+                await AsyncStorage.setItem('profileEmail', user.email);
                 alert('Login successful');
                 navigation.navigate('MainScreen');
             }
