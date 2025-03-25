@@ -16,7 +16,7 @@ app.use(cors()); // This will allow requests from all origins
 
 // OR enable CORS with custom configuration (to allow only specific origins)
 const corsOptions = {
-    origin: 'http://192.168.0.144:8081', // Replace with your frontend URL
+    origin: 'http://192.168.0.179:8081 ', // Replace with your frontend URL
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 };

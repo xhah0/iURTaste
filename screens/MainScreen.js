@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Modal, Platform, Pressable, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -14,7 +14,7 @@ import KFC from "../assets/KFC.png";
 import Phut from "../assets/PHUT.png";
 
 const restaurants = [
-    { id: "1", name: "SmashBurger", image: burgerImage, menu: "BurgerMenuScreen"},
+    { id: "1", name: "SmashBurger", image: burgerImage, menu: "BurgerMenuScreen" },
     { id: "2", name: "Artigiano", image: Artigiano, menu: "PastaMenuScreen" },
     { id: "3", name: "SushiCo Tirana", image: SushiCo, menu: "SushiMenuScreen" },
     { id: "4", name: "Proper Pizza", image: proper, menu: "BurgerMenuScreen" },
@@ -29,6 +29,11 @@ const restaurants = [
 const MainScreen = () => {
     const navigation = useNavigation();
     const [menuVisible, setMenuVisible] = useState(false);
+
+    // Disable swipe-back gesture so you can't go back to the LoginScreen
+    useEffect(() => {
+        navigation.setOptions({ gestureEnabled: false });
+    }, [navigation]);
 
     const handleMenuToggle = () => setMenuVisible(!menuVisible);
     const closeMenu = () => setMenuVisible(false);
@@ -48,6 +53,17 @@ const MainScreen = () => {
         navigation.navigate('CartScreen');
     };
 
+    const navigateToDelivery = () => {
+        closeMenu();
+        navigation.navigate('DeliveryScreen');
+    };
+
+    // New function for Location
+    const navigateToLocation = () => {
+        closeMenu();
+        navigation.navigate('LocationScreen');
+    };
+
     return (
         <View style={styles.container}>
             {/* Top Taskbar */}
@@ -61,7 +77,7 @@ const MainScreen = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* Sandwich Menu (Taskbar) */}
+            {/* Sandwich Menu */}
             <Modal visible={menuVisible} transparent animationType="fade">
                 <Pressable style={styles.overlay} onPress={closeMenu}>
                     <View style={styles.menuContainer}>
@@ -71,8 +87,11 @@ const MainScreen = () => {
                         <TouchableOpacity style={styles.menuItem} onPress={navigateToCart}>
                             <Text style={styles.menuText}>Cart</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.replace('LoginScreen')}>
-                            <Text style={[styles.menuText, { color: 'red' }]}>Logout</Text>
+                        <TouchableOpacity style={styles.menuItem} onPress={navigateToDelivery}>
+                            <Text style={styles.menuText}>Delivery</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.menuItem} onPress={navigateToLocation}>
+                            <Text style={styles.menuText}>Location</Text>
                         </TouchableOpacity>
                     </View>
                 </Pressable>
@@ -104,71 +123,19 @@ const MainScreen = () => {
 export default MainScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#659561',
-        paddingTop: Platform.OS === 'ios' ? 45 : 25, // Adjust for status bar spacing
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 10,
-        backgroundColor: '#659561',
-        justifyContent: 'space-between',
-    },
+    container: { flex: 1, backgroundColor: '#659561', paddingTop: Platform.OS === 'ios' ? 45 : 25 },
+    header: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#659561', justifyContent: 'space-between' },
     menuIcon: { marginLeft: 10 },
     profileIcon: { marginRight: 10 },
     logo: { width: 100, height: 40, resizeMode: 'contain' },
-
     overlay: { flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.3)' },
-    menuContainer: {
-        position: 'absolute',
-        top: 80,
-        left: 10,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 10,
-        elevation: 5
-    },
+    menuContainer: { position: 'absolute', top: 80, left: 10, backgroundColor: '#fff', borderRadius: 10, padding: 10, elevation: 5 },
     menuItem: { padding: 10 },
     menuText: { color: '#659561', fontWeight: 'bold' },
-
-    content: {
-        flex: 1,
-        alignItems: 'center',
-        padding: 5,
-    },
-    welcome: {
-        fontSize: 24,
-        marginBottom: 15,
-        color: '#fff',
-        fontWeight: 'bold'
-    },
-    row: {
-        justifyContent: 'space-between',
-        marginBottom: 5,
-    },
-    restaurantCard: {
-        backgroundColor: "rgba(255, 255, 255, 0.7)",
-        padding: 12,
-        margin: 5,
-        borderRadius: 12,
-        borderWidth: 1,
-        borderColor: '#FFF',
-        alignItems: "center",
-        width: '47%',
-        elevation: 3,
-    },
-    image: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-    },
-    restaurantName: {
-        fontSize: 16,
-        fontWeight: "bold",
-        color: "#659561",
-        marginTop: 8,
-        textAlign: 'center'
-    },
+    content: { flex: 1, alignItems: 'center', padding: 5 },
+    welcome: { fontSize: 24, marginBottom: 15, color: '#fff', fontWeight: 'bold' },
+    row: { justifyContent: 'space-between', marginBottom: 5 },
+    restaurantCard: { backgroundColor: "rgba(255, 255, 255, 0.7)", padding: 12, margin: 5, borderRadius: 12, borderWidth: 1, borderColor: '#FFF', alignItems: "center", width: '47%', elevation: 3 },
+    image: { width: 100, height: 100, borderRadius: 50 },
+    restaurantName: { fontSize: 16, fontWeight: "bold", color: "#659561", marginTop: 8, textAlign: 'center' },
 });

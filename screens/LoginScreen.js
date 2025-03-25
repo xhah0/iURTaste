@@ -32,7 +32,7 @@ const LoginScreen = () => {
         }
         setErrorMessage('');
         try {
-            const response = await axios.post("http://192.168.0.144:5000/api/auth/login", {
+            const response = await axios.post("http://192.168.0.179:5000/api/auth/login", {
                 username,
                 password,
             });

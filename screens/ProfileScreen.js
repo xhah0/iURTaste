@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from 'r
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/BackButton';
-import LoginScreen from "./LoginScreen";
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 
 const ProfileScreen = () => {
@@ -14,18 +13,17 @@ const ProfileScreen = () => {
 
     useEffect(() => {
         const loadProfile = async () => {
-           try {
-               const savedName = await AsyncStorage.getItem('profileName');
-               const savedEmail = await AsyncStorage.getItem('profileEmail');
-               const savedImage = await AsyncStorage.getItem('profileImage');
+            try {
+                const savedName = await AsyncStorage.getItem('profileName');
+                const savedEmail = await AsyncStorage.getItem('profileEmail');
+                const savedImage = await AsyncStorage.getItem('profileImage');
 
-               if (savedName) setName(savedName);
-               if (savedEmail) setEmail(savedEmail);
-               if (savedImage) setProfileImage(savedImage);
-
-           } catch (error) {
-               console.error("Error loading profile data",error);
-           }
+                if (savedName) setName(savedName);
+                if (savedEmail) setEmail(savedEmail);
+                if (savedImage) setProfileImage(savedImage);
+            } catch (error) {
+                console.error("Error loading profile data", error);
+            }
         };
         const focusListener = navigation.addListener('focus', loadProfile);
         return focusListener;
@@ -43,10 +41,10 @@ const ProfileScreen = () => {
         await AsyncStorage.removeItem('profileName');
         await AsyncStorage.removeItem('profileEmail');
         await AsyncStorage.removeItem('profileImage');
-
         navigation.navigate('LoginScreen');
-    }
-    const selectImage = async  () => {
+    };
+
+    const selectImage = async () => {
         const options = {
             mediaType: 'photo',
             quality: 1,
@@ -66,7 +64,7 @@ const ProfileScreen = () => {
         } catch (error) {
             console.error('Error selecting image:', error);
         }
-    }
+    };
 
     const captureImage = async () => {
         const options = {
@@ -94,7 +92,10 @@ const ProfileScreen = () => {
             <BackButton />
             <View style={styles.content}>
                 <TouchableOpacity onPress={selectImage}>
-                    <Image source={profileImage ? { uri: profileImage } : require('../assets/profile.png')} style={styles.avatar} />
+                    <Image
+                        source={profileImage ? { uri: profileImage } : require('../assets/profile.png')}
+                        style={styles.avatar}
+                    />
                 </TouchableOpacity>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.email}>{email}</Text>
