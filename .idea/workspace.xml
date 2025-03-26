@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="Cant remember what push, just know that its the frontend one">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DeliveryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DeliveryScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignupScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignupScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "xhah0"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/xhah0/iURTaste",
+    "accountId": "71de4eef-7d5c-4ef7-8ef2-b0318e9eeded"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -71,7 +87,8 @@
       <option name="presentableId" value="Default" />
       <updated>1742135559578</updated>
       <workItem from="1742135561492" duration="7605000" />
-      <workItem from="1742978086073" duration="99000" />
+      <workItem from="1742978086073" duration="715000" />
+      <workItem from="1742979213231" duration="1465000" />
     </task>
     <task id="LOCAL-00001" summary="Cant remember what push, just know that its the frontend one">
       <option name="closed" value="true" />
@@ -81,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742930379773</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Cant remember what push, just know that its the frontend one">
+      <option name="closed" value="true" />
+      <created>1742978591197</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742978591197</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -31,11 +31,11 @@ const SettingsScreen = () => {
                 <TouchableOpacity style={styles.option} onPress={() => setShowPrivacy(!showPrivacy)}>
                     <Text style={styles.optionText}>Privacy Policy</Text>
                 </TouchableOpacity>
-                {showPrivacy && <Text style={styles.policyText}>At iURTaste, we are committed to protecting your privacy...</Text>}
+                {showPrivacy && <Text style={styles.policyText}>iURTaste values privacy. The app collects personal information (e.g., name, email, contact details) during registration and gathers usage data and location (with permission) to improve functionality and enhance user experience. Data is used solely for operating the app, processing transactions, and providing personalized content, and is not sold to third parties. Although reasonable security measures are in place, no online storage is entirely secure. By using iURTaste, acceptance of these data practices is implied, and any updates to this policy will be posted for review.</Text>}
                 <TouchableOpacity style={styles.option} onPress={() => setShowTerms(!showTerms)}>
                     <Text style={styles.optionText}>Terms of Service</Text>
                 </TouchableOpacity>
-                {showTerms && <Text style={styles.policyText}>By using iURTaste, you agree to these Terms of Service...</Text>}
+                {showTerms && <Text style={styles.policyText}>Use of iURTaste indicates agreement to these Terms. The app is provided on an "as is" basis for personal, non-commercial use only. Registration requires accurate information, and users are responsible for keeping account credentials confidential. A limited license is granted to use the app, while all content and intellectual property remain with iURTaste or its licensors. Unauthorized reproduction or distribution of app content is prohibited and may result in termination of access. Use of iURTaste is subject to applicable laws, and by using the app, acceptance of these Terms is acknowledged.</Text>}
             </ScrollView>
         </SafeAreaView>
     );

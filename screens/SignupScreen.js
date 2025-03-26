@@ -19,7 +19,7 @@ const SignupScreen = () => {
             return;
         }
         try{
-            const response = await axios.post("http://192.168.0.179:5000/api/auth/signup",{
+            const response = await axios.post("http://10.0.50.82:5000/api/auth/signup",{
                     name: username,
                     username,
                     email,
