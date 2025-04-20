@@ -1,54 +1,199 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const dotenv = require('dotenv');
-const http = require('http'); // Required for WebSockets
-const socketIo = require('socket.io');
+const cors = require('cors');
+const authRoutes = require('./routes/auth');
+const restaurantRoutes = require('./routes/restaurant');
+const menuRoutes = require('./routes/menu');
+const orderRoutes = require('./routes/order');
+const deliveryRoutes = require('./routes/delivery');
+const stripe = require('stripe')('sk_test_51RBl7yIyxMSX00ECyiFyPzVID1rqwSbl8q76Xw0CrRsoxJOw24hKJKIBVXY1XqV8CYQyGXYaCOs9x1PAGiPsTmkC00DQUrLqDs'); // Replace with your actual secret key
+const paymentRoutes = require('./routes/payment');
+const admin = require('firebase-admin');
+const serviceAccount = require('./iurtaste-firebase-admin.json');
+
+
 
 dotenv.config();
-
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server, { cors: { origin: "*" } }); // WebSocket CORS settings
 
-// Enable CORS for all routes
-app.use(cors()); // This will allow requests from all origins
+app.use(cors());
+app.use(express.json());
 
-// OR enable CORS with custom configuration (to allow only specific origins)
-const corsOptions = {
-    origin: 'http://10.0.50.82:8084 ', // Replace with your frontend URL
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-};
-app.use(cors(corsOptions));
+app.use('/api/auth', authRoutes);
+app.use('/api/restaurants', restaurantRoutes);
+app.use('/api/restaurants', menuRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/delivery', deliveryRoutes);
+app.use('/api/payment', paymentRoutes);
+app.use('/api/cart', require('./routes/cart'));
+app.use('/api/orders', require('./routes/order'));
 
-// Other middlewares and routes
-app.use(express.json()); // For parsing application/json
-app.use('/api/auth', require('./routes/auth')); // Your authentication routes
 
-// Start MongoDB connection
+
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 })
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error(err));
 
-// Test route
-app.get('/', (req, res) => {
-    res.send('Welcome to the Food Delivery API');
-});
-
-// WebSocket connection (optional, if you use it)
-io.on('connection', (socket) => {
-    console.log('A user connected:', socket.id);
-    socket.on('disconnect', () => {
-        console.log('User disconnected:', socket.id);
-    });
-});
-
-// Start server
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const dotenv = require('dotenv');
+// const http = require('http'); // Required for WebSockets
+// const socketIo = require('socket.io');
+//
+// dotenv.config();
+//
+// const app = express();
+// const server = http.createServer(app);
+// const io = socketIo(server, { cors: { origin: "*" } }); // WebSocket CORS settings
+//
+// // Enable CORS for all routes
+// app.use(cors()); // This will allow requests from all origins
+//
+// // OR enable CORS with custom configuration (to allow only specific origins)
+// const corsOptions = {
+//     origin: `${process.env.API_URL}:8081 `, // Replace with your frontend URL
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type'],
+// };
+// app.use(cors(corsOptions));
+//
+// // Other middlewares and routes
+// app.use(express.json()); // For parsing application/json
+// app.use('/api/auth', require('./routes/auth')); // Your authentication routes
+// //app.use('/api/user', require('./routes/userRoutes'));
+//
+// // Start MongoDB connection
+// mongoose.connect(process.env.MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// })
+//     .then(() => console.log('MongoDB Connected'))
+//     .catch(err => console.log(err));
+//
+// // Test route
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the Food Delivery API');
+// });
+//
+// // WebSocket connection (optional, if you use it)
+// io.on('connection', (socket) => {
+//     console.log('A user connected:', socket.id);
+//     socket.on('disconnect', () => {
+//         console.log('User disconnected:', socket.id);
+//     });
+// });
+//
+// // Start server
+// const PORT = process.env.PORT || 5000;
+// server.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+// });

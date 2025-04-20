@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import axios from 'axios';
+import {API_URL} from "./api/user";
+
 
 const SignupScreen = () => {
     const [email, setEmail] = useState('');
@@ -19,7 +21,7 @@ const SignupScreen = () => {
             return;
         }
         try{
-            const response = await axios.post("http://10.0.50.82:5000/api/auth/signup",{
+            const response = await axios.post(`${API_URL}/api/auth/signup`,{
                     name: username,
                     username,
                     email,

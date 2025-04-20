@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as Google from 'expo-auth-session/providers/google';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {API_URL} from "./api/user";
 
 
 const LoginScreen = () => {
@@ -32,7 +33,7 @@ const LoginScreen = () => {
         }
         setErrorMessage('');
         try {
-            const response = await axios.post("http://10.0.50.82:5000/api/auth/login", {
+            const response = await axios.post(`${API_URL}/api/auth/login`, {
                 username,
                 password,
             });
