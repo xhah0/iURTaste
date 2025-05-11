@@ -4,70 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="Cant remember what push, just know that its the frontend one">
-      <change afterPath="$PROJECT_DIR$/backend/iurtaste-firebase-admin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/MenuItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Restaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/delivery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/payment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/restaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/userRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/utils/notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/api/user.js" afterDir="false" />
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="back end doneee">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/controllers/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/cartController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/deliveryController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/controllers/restaurantController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/menuController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/middleware/adminMiddleware.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/middleware/authMiddleware.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/middleware/roleMiddleware.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Driver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Notification.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Order.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Payment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Restaurants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/Review.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/User.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/models/menuReview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/paymentController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/delivery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/manageMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/order.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/orderManagement.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/payment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/protectedRoute.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/restaurant.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/review.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/paymentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/services/notificationService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food-delivery-backend/utils/sendEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurantController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/EditProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SignupScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignupScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +103,9 @@
       <workItem from="1743604933377" duration="651000" />
       <workItem from="1743625368738" duration="5586000" />
       <workItem from="1744127263222" duration="15528000" />
-      <workItem from="1745155879514" duration="4435000" />
+      <workItem from="1745155879514" duration="4701000" />
+      <workItem from="1745437589045" duration="1488000" />
+      <workItem from="1746967751070" duration="625000" />
     </task>
     <task id="LOCAL-00001" summary="Cant remember what push, just know that its the frontend one">
       <option name="closed" value="true" />
@@ -181,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742978591197</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="back end done">
+      <option name="closed" value="true" />
+      <created>1745160954954</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745160954954</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,18 +139,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cant remember what push, just know that its the frontend one" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cant remember what push, just know that its the frontend one" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/models/Restaurant.js</url>
-          <line>14</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="back end done" />
+    <option name="LAST_COMMIT_MESSAGE" value="back end done" />
   </component>
 </project>
