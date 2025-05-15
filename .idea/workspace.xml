@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="expo update" />
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="expo update last">
+      <change afterPath="$PROJECT_DIR$/contexts/AuthContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iurtaste-app/navigation/AppNavigator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iurtaste-app/screens/LoginScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/navigation/AppNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignupScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignupScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/api/user.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +75,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\OneDrive\\Desktop\\githubiurtaste\\iURTaste\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -104,7 +117,10 @@
       <workItem from="1744127263222" duration="15528000" />
       <workItem from="1745155879514" duration="4701000" />
       <workItem from="1745437589045" duration="1488000" />
-      <workItem from="1746967751070" duration="1019000" />
+      <workItem from="1746967751070" duration="1222000" />
+      <workItem from="1746979909109" duration="7991000" />
+      <workItem from="1746995962924" duration="308000" />
+      <workItem from="1746996557384" duration="6609000" />
     </task>
     <task id="LOCAL-00001" summary="Cant remember what push, just know that its the frontend one">
       <option name="closed" value="true" />
@@ -138,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746968772945</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="expo update last">
+      <option name="closed" value="true" />
+      <created>1746968797947</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746968797947</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +172,7 @@
     <MESSAGE value="Cant remember what push, just know that its the frontend one" />
     <MESSAGE value="back end done" />
     <MESSAGE value="expo update" />
-    <option name="LAST_COMMIT_MESSAGE" value="expo update" />
+    <MESSAGE value="expo update last" />
+    <option name="LAST_COMMIT_MESSAGE" value="expo update last" />
   </component>
 </project>

@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 //     return {headers:{Authorization:token}};
 // }
 
-export const API_URL =`http://192.168.0.144:5000`;// Change to your backend URL
+export const API_URL =`http://172.20.10.:5000`;// Change to your backend URL
 
 
 const api = axios.create({

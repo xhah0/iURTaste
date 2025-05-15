@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import * as Google from 'expo-auth-session/providers/google';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {API_URL} from "./api/user";
+import React, { useState, useContext } from 'react';
+import {
+    View,
+    Text,
+    TextInput,
+    Button,
+    Alert,
+    ScrollView,
+    TouchableOpacity,
+    KeyboardAvoidingView,
+    Image,
+    Platform
+} from 'react-native';
+import { StyleSheet } from 'react-native';
+
+import {AuthContext} from "../contexts/AuthContext";
+import * as Google from "expo-auth-session";
 
 
-const LoginScreen = () => {
-    const [username, setUsername] = useState('');
+// const LoginScreen = () => {
+//     const { login } = useContext(AuthContext);
+//     const [email, setEmail] = useState('');
+//     const [password, setPassword] = useState('');
+
+export default function LoginScreen({ navigation }) {
+    const { login } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const navigation = useNavigation();
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         androidClientId: 'YOUR_ANDROID_CLIENT_ID.apps.googleusercontent.com',
@@ -26,55 +40,110 @@ const LoginScreen = () => {
         }
     }, [response]);
 
+    // const handleLogin = async () => {
+    //     if (!username.includes('@')) {
+    //         setErrorMessage('Please enter a valid email address.');
+    //         return;
+    //     }
+    //     setErrorMessage('');
+    //     try {
+    //         const response = await axios.post(`${API_URL}/api/auth/login`, {
+    //             email,
+    //             password,
+    //         });
+    //
+    //         // if (response.status === 200) {
+    //         //     const user = response.data.user;
+    //         //     await AsyncStorage.setItem('profileName', user.name);
+    //         //     await AsyncStorage.setItem('profileEmail', user.email);
+    //         //     alert('Login successful');
+    //         //     navigation.navigate('MainScreen');
+    //         // }
+    //
+    //         Alert.alert('Login Successful!');
+    //         navigation.navigate('MainScreen');
+    //     } catch (error) {
+    //         if (error.response) {
+    //             const message = error.response.status;
+    //             if (message === 404) {
+    //                 alert("Username does not exist.");
+    //             } else if (message === 401) {
+    //                 alert("Incorrect password.");
+    //             } else {
+    //                 alert("An error occurred. Please try again.");
+    //             }
+    //         } else {
+    //             alert("Network error. Please check your connection.");
+    //         }
+    //     }
+    // };
     const handleLogin = async () => {
-        if (!username.includes('@')) {
-            setErrorMessage('Please enter a valid email address.');
-            return;
-        }
-        setErrorMessage('');
         try {
-            const response = await axios.post(`${API_URL}/api/auth/login`, {
-                username,
-                password,
-            });
-
-            if (response.status === 200) {
-                const user = response.data.user;
-                await AsyncStorage.setItem('profileName', user.name);
-                await AsyncStorage.setItem('profileEmail', user.email);
-                alert('Login successful');
-                navigation.navigate('MainScreen');
-            }
-        } catch (error) {
-            if (error.response) {
-                const message = error.response.status;
-                if (message === 404) {
-                    alert("Username does not exist.");
-                } else if (message === 401) {
-                    alert("Incorrect password.");
-                } else {
-                    alert("An error occurred. Please try again.");
-                }
-            } else {
-                alert("Network error. Please check your connection.");
-            }
+            await login(email, password);
+            navigation.navigate('MainScreen'); // Navigate after login success
+        } catch (err) {
+            console.log(err.response?.data || err.message);
+            Alert.alert('Login failed', err.response?.data?.message || 'Something went wrong');
         }
     };
 
 
+//     return (
+//         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+//             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+//                 <Image source={require('../assets/Logo.png')} style={styles.logo}/>
+//                 <Text style={styles.title}>Welcome to UR<Text style={styles.smol}>i</Text>A!</Text>
+//
+//                 <TextInput
+//                     style={styles.input}
+//                     placeholder="Email"
+//                     placeholderTextColor="#ddd"
+//                     value={username}
+//                     onChangeText={setUsername}
+//                 />
+//                 <TextInput
+//                     style={styles.input}
+//                     placeholder="Password"
+//                     placeholderTextColor="#ddd"
+//                     secureTextEntry
+//                     value={password}
+//                     onChangeText={setPassword}
+//                 />
+//
+//                 {/* Updated Login Button */}
+//                 <TouchableOpacity style={styles.actionButton} onPress={handleLogin}>
+//                     <Text style={styles.actionButtonText}>Login at iURiT</Text>
+//                 </TouchableOpacity>
+//
+//                 {/* Google Sign-In Button */}
+//                 <TouchableOpacity style={styles.actionButtonWhite} onPress={() => promptAsync()}>
+//                     <Image source={require('../assets/google.png')} style={styles.googleIcon}/>
+//                     <Text style={styles.googleText}>Sign Up with Google</Text>
+//                 </TouchableOpacity>
+//
+//                 <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+//                     <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
+//                 </TouchableOpacity>
+//             </ScrollView>
+//         </KeyboardAvoidingView>
+//     );
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <Image source={require('../assets/Logo.png')} style={styles.logo} />
                 <Text style={styles.title}>Welcome to UR<Text style={styles.smol}>i</Text>A!</Text>
 
+                <Text style={styles.label}>Email:</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     placeholderTextColor="#ddd"
-                    value={username}
-                    onChangeText={setUsername}
+                    value={email} // Or use `email` if you're renaming the state
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
                 />
+
+                <Text style={styles.label}>Password:</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
@@ -84,12 +153,10 @@ const LoginScreen = () => {
                     onChangeText={setPassword}
                 />
 
-                {/* Updated Login Button */}
                 <TouchableOpacity style={styles.actionButton} onPress={handleLogin}>
                     <Text style={styles.actionButtonText}>Login at iURiT</Text>
                 </TouchableOpacity>
 
-                {/* Google Sign-In Button */}
                 <TouchableOpacity style={styles.actionButtonWhite} onPress={() => promptAsync()}>
                     <Image source={require('../assets/google.png')} style={styles.googleIcon} />
                     <Text style={styles.googleText}>Sign Up with Google</Text>
@@ -101,9 +168,11 @@ const LoginScreen = () => {
             </ScrollView>
         </KeyboardAvoidingView>
     );
+
 };
 
-export default LoginScreen;
+
+// export default LoginScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -184,3 +253,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 });
+
+
+

@@ -13,15 +13,18 @@ import SettingsScreen from './screens/SettingsScreen';
 import DeliveryScreen from './screens/DeliveryScreen'; // Ensure this import is correct
 import EditProfileScreen from './screens/EditProfileScreen';
 import LocationScreen from './screens/LocationScreen';
+import {AuthProvider} from "./contexts/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
-        <StripeProvider publishableKey="pk_test_your_publishable_key">
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="LoginScreen">
-                    <Stack.Screen
+
+        <AuthProvider>
+            <StripeProvider publishableKey="pk_test_your_publishable_key">
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName="LoginScreen">
+                        <Stack.Screen
                         name="LoginScreen"
                         component={LoginScreen}
                         options={{ headerShown: false, gestureEnabled: false }}
@@ -80,5 +83,6 @@ export default function App() {
                 </Stack.Navigator>
             </NavigationContainer>
         </StripeProvider>
+        </AuthProvider>
     );
 }
