@@ -13,7 +13,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import DeliveryScreen from './screens/DeliveryScreen'; // Ensure this import is correct
 import EditProfileScreen from './screens/EditProfileScreen';
 import LocationScreen from './screens/LocationScreen';
-import {AuthProvider} from "./contexts/AuthContext";
+import {AuthProvider} from './contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 

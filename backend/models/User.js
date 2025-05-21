@@ -5,7 +5,11 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['admin', 'restaurant', 'delivery', 'user'], default: 'user' },
+    role: {
+        type: String,
+        enum: ['admin', 'restaurant', 'delivery', 'user'],
+        default: 'user'
+    },
     profilePicture: { type: String },
     loyaltyPoints: { type: Number, default: 0 },
     restaurant: {
@@ -15,19 +19,18 @@ const userSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-// Hash password before saving
+// ✅ Hash password before saving (runs only if password is modified)
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
+    console.log('[DEBUG] Hashing password before saving...');
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
-// Password comparison
+// ✅ Password comparison helper method
 userSchema.methods.comparePassword = function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);
-
-

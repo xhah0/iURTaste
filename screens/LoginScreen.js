@@ -3,7 +3,6 @@ import {
     View,
     Text,
     TextInput,
-    Button,
     Alert,
     ScrollView,
     TouchableOpacity,
@@ -12,15 +11,9 @@ import {
     Platform
 } from 'react-native';
 import { StyleSheet } from 'react-native';
-
-import {AuthContext} from "../contexts/AuthContext";
+import api from '../api'; // ✅ correct import
+import { AuthContext } from "../contexts/AuthContext";
 import * as Google from "expo-auth-session";
-
-
-// const LoginScreen = () => {
-//     const { login } = useContext(AuthContext);
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
 
 export default function LoginScreen({ navigation }) {
     const { login } = useContext(AuthContext);
@@ -33,117 +26,36 @@ export default function LoginScreen({ navigation }) {
         expoClientId: 'YOUR_EXPO_CLIENT_ID.apps.googleusercontent.com',
     });
 
-    // Handle Google login response
     React.useEffect(() => {
         if (response?.type === 'success') {
             navigation.navigate('MainScreen');
         }
     }, [response]);
 
-    // const handleLogin = async () => {
-    //     if (!username.includes('@')) {
-    //         setErrorMessage('Please enter a valid email address.');
-    //         return;
-    //     }
-    //     setErrorMessage('');
-    //     try {
-    //         const response = await axios.post(`${API_URL}/api/auth/login`, {
-    //             email,
-    //             password,
-    //         });
-    //
-    //         // if (response.status === 200) {
-    //         //     const user = response.data.user;
-    //         //     await AsyncStorage.setItem('profileName', user.name);
-    //         //     await AsyncStorage.setItem('profileEmail', user.email);
-    //         //     alert('Login successful');
-    //         //     navigation.navigate('MainScreen');
-    //         // }
-    //
-    //         Alert.alert('Login Successful!');
-    //         navigation.navigate('MainScreen');
-    //     } catch (error) {
-    //         if (error.response) {
-    //             const message = error.response.status;
-    //             if (message === 404) {
-    //                 alert("Username does not exist.");
-    //             } else if (message === 401) {
-    //                 alert("Incorrect password.");
-    //             } else {
-    //                 alert("An error occurred. Please try again.");
-    //             }
-    //         } else {
-    //             alert("Network error. Please check your connection.");
-    //         }
-    //     }
-    // };
     const handleLogin = async () => {
         try {
-            await login(email, password);
-            navigation.navigate('MainScreen'); // Navigate after login success
+            await login(email, password); // This likely uses api under the hood
+            navigation.navigate('MainScreen');
         } catch (err) {
             console.log(err.response?.data || err.message);
             Alert.alert('Login failed', err.response?.data?.message || 'Something went wrong');
         }
     };
 
-
-//     return (
-//         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-//             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-//                 <Image source={require('../assets/Logo.png')} style={styles.logo}/>
-//                 <Text style={styles.title}>Welcome to UR<Text style={styles.smol}>i</Text>A!</Text>
-//
-//                 <TextInput
-//                     style={styles.input}
-//                     placeholder="Email"
-//                     placeholderTextColor="#ddd"
-//                     value={username}
-//                     onChangeText={setUsername}
-//                 />
-//                 <TextInput
-//                     style={styles.input}
-//                     placeholder="Password"
-//                     placeholderTextColor="#ddd"
-//                     secureTextEntry
-//                     value={password}
-//                     onChangeText={setPassword}
-//                 />
-//
-//                 {/* Updated Login Button */}
-//                 <TouchableOpacity style={styles.actionButton} onPress={handleLogin}>
-//                     <Text style={styles.actionButtonText}>Login at iURiT</Text>
-//                 </TouchableOpacity>
-//
-//                 {/* Google Sign-In Button */}
-//                 <TouchableOpacity style={styles.actionButtonWhite} onPress={() => promptAsync()}>
-//                     <Image source={require('../assets/google.png')} style={styles.googleIcon}/>
-//                     <Text style={styles.googleText}>Sign Up with Google</Text>
-//                 </TouchableOpacity>
-//
-//                 <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
-//                     <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
-//                 </TouchableOpacity>
-//             </ScrollView>
-//         </KeyboardAvoidingView>
-//     );
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
                 <Image source={require('../assets/Logo.png')} style={styles.logo} />
                 <Text style={styles.title}>Welcome to UR<Text style={styles.smol}>i</Text>A!</Text>
 
-                <Text style={styles.label}>Email:</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
                     placeholderTextColor="#ddd"
-                    value={email} // Or use `email` if you're renaming the state
+                    value={email}
                     onChangeText={setEmail}
                     autoCapitalize="none"
                 />
-
-                <Text style={styles.label}>Password:</Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
@@ -168,11 +80,7 @@ export default function LoginScreen({ navigation }) {
             </ScrollView>
         </KeyboardAvoidingView>
     );
-
-};
-
-
-// export default LoginScreen;
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -208,7 +116,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
     },
-    /* Updated Button Style */
     actionButton: {
         backgroundColor: '#fff',
         padding: 12,
@@ -222,7 +129,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#000000',
     },
-    /* Google Button */
     actionButtonWhite: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -253,6 +159,3 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 });
-
-
-

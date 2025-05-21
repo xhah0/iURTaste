@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, BackHandler } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    Image,
+    TouchableOpacity,
+    BackHandler,
+    Alert,
+} from 'react-native';
 import BackButton from "../components/BackButton";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from '../api';
 
 const DeliveryScreen = () => {
     const navigation = useNavigation();
     const route = useRoute();
     const order = route.params?.order;
 
-    // Disable swipe-back gesture if possible and override hardware back
     useEffect(() => {
         navigation.setOptions({ gestureEnabled: false });
         const backAction = () => {
@@ -20,7 +29,21 @@ const DeliveryScreen = () => {
         return () => backHandler.remove();
     }, [navigation]);
 
-    // If an order was passed, display it; otherwise, load saved orders.
+    const markAsDelivered = async () => {
+        try {
+            const response = await api.put('/api/delivery/update-status', {
+                orderId: order._id,
+                status: 'delivered',
+            });
+            Alert.alert('Success', 'Order marked as delivered!', [
+                { text: 'OK', onPress: () => navigation.navigate('MainScreen') }
+            ]);
+        } catch (error) {
+            console.error(error.response?.data || error.message);
+            Alert.alert('Error', 'Failed to update delivery status');
+        }
+    };
+
     if (order) {
         const orderDate = new Date(order.date);
         const formattedDate = orderDate.toLocaleString();
@@ -41,21 +64,22 @@ const DeliveryScreen = () => {
                 <BackButton onPress={() => navigation.reset({ index: 0, routes: [{ name: "MainScreen" }] })} />
                 <Text style={styles.header}>Order Ongoing</Text>
                 <View style={styles.orderInfo}>
-                    <Text style={styles.orderText}>Order ID: {order.id}</Text>
+                    <Text style={styles.orderText}>Order ID: {order._id}</Text>
                     <Text style={styles.orderText}>Placed on: {formattedDate}</Text>
-                    <Text style={styles.orderTotal}>Total: {order.total.toFixed(2)} ALL</Text>
+                    <Text style={styles.orderTotal}>Total: {order.totalAmount?.toFixed(2) || 0} ALL</Text>
                 </View>
                 <FlatList
                     data={order.items}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={renderItem}
                     contentContainerStyle={styles.itemsList}
                 />
+                <TouchableOpacity style={styles.button} onPress={markAsDelivered}>
+                    <Text style={styles.buttonText}>Mark as Delivered</Text>
+                </TouchableOpacity>
             </View>
         );
     } else {
-        // If no new order is passed, load all saved orders (if any) from AsyncStorage.
-        // For simplicity, this branch could be expanded as needed.
         return (
             <View style={styles.container}>
                 <BackButton onPress={() => navigation.reset({ index: 0, routes: [{ name: "MainScreen" }] })} />
@@ -81,4 +105,16 @@ const styles = StyleSheet.create({
     itemName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
     itemDetails: { fontSize: 14, color: '#777' },
     noOrders: { fontSize: 18, color: '#fff', textAlign: 'center', marginTop: 20 },
+    button: {
+        backgroundColor: '#fff',
+        padding: 12,
+        borderRadius: 30,
+        marginTop: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        color: '#000',
+    },
 });

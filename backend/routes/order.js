@@ -1,5 +1,5 @@
 const express = require('express');
-const { protect } = require('../middleware/authMiddleware');
+const { protect } = require('../middleware/auth');
 const { createOrder, getOrdersForCustomer, updateOrderStatus, getUserOrders} = require('../controllers/orderController');
 const { checkout } = require('../controllers/orderController');
 const { getRestaurantOrders } = require('../controllers/orderController');
