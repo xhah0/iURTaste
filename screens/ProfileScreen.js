@@ -56,7 +56,7 @@ export default function ProfileScreen() {
                     </TouchableOpacity>
 
                     <View style={styles.formWrapper}>
-                        <Text style={styles.nameLabel}>Xhaho</Text>
+                        <Text style={styles.nameLabel}>{name}</Text>
 
                         <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate('EditProfileScreen')}>
                             <Text style={styles.actionButtonText}>Go to Edit Profile</Text>

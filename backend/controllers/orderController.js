@@ -5,37 +5,75 @@ const { sendPushNotification } = require('../utils/notification'); // Import the
 const Cart = require('../models/Cart');
 const { clearCart } = require('./cartController');
 
+// exports.createOrder = async (req, res) => {
+//     const { restaurantId, items, deliveryAddress } = req.body;
+//     const customerId = req.user._id;
+//
+//     try {
+//         const restaurant = await Restaurant.findById(restaurantId);
+//
+//         if (!restaurant) {
+//             return res.status(404).json({ message: 'Restaurant not found' });
+//         }
+//
+//         if (!['cod', 'card'].includes(paymentMethod)) {
+//             return res.status(400).json({ message: 'Invalid payment method' });
+//         }
+//
+//         // Calculate total price
+//         let totalAmount = 0;
+//         const orderItems = [];
+//         for (let item of items) {
+//             const menuItem = await MenuItem.findById(item.menuItemId);
+//             if (!menuItem) {
+//                 return res.status(404).json({ message: `Menu item ${item.menuItemId} not found` });
+//             }
+//
+//             const totalPrice = menuItem.price * item.quantity;
+//             totalAmount += totalPrice;
+//             orderItems.push({
+//                 menuItem: menuItem._id,
+//                 quantity: item.quantity,
+//                 totalPrice
+//             });
+//         }
+//
+//         const newOrder = new Order({
+//             customer: customerId,
+//             restaurant: restaurantId,
+//             items: orderItems,
+//             deliveryAddress,
+//             totalAmount
+//         });
+//
+//         await newOrder.save();
+//         res.status(201).json(newOrder);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: 'Failed to create order' });
+//     }
+// };
+
 exports.createOrder = async (req, res) => {
-    const { restaurantId, items, deliveryAddress } = req.body;
+    const { restaurantId, items, deliveryAddress, paymentMethod } = req.body;
     const customerId = req.user._id;
 
     try {
         const restaurant = await Restaurant.findById(restaurantId);
-
-        if (!restaurant) {
-            return res.status(404).json({ message: 'Restaurant not found' });
-        }
+        if (!restaurant) return res.status(404).json({ message: 'Restaurant not found' });
 
         if (!['cod', 'card'].includes(paymentMethod)) {
             return res.status(400).json({ message: 'Invalid payment method' });
         }
 
-        // Calculate total price
         let totalAmount = 0;
         const orderItems = [];
-        for (let item of items) {
+        for (const item of items) {
             const menuItem = await MenuItem.findById(item.menuItemId);
-            if (!menuItem) {
-                return res.status(404).json({ message: `Menu item ${item.menuItemId} not found` });
-            }
+            if (!menuItem) return res.status(404).json({ message: `Menu item ${item.menuItemId} not found` });
 
-            const totalPrice = menuItem.price * item.quantity;
-            totalAmount += totalPrice;
-            orderItems.push({
-                menuItem: menuItem._id,
-                quantity: item.quantity,
-                totalPrice
-            });
+            totalAmount += menuItem.price * item.quantity;
+            orderItems.push({ menuItem: menuItem._id, quantity: item.quantity });
         }
 
         const newOrder = new Order({
@@ -43,7 +81,8 @@ exports.createOrder = async (req, res) => {
             restaurant: restaurantId,
             items: orderItems,
             deliveryAddress,
-            totalAmount
+            paymentMethod,
+            totalAmount,
         });
 
         await newOrder.save();
@@ -271,5 +310,6 @@ exports.updateDeliveryStatus = async (req, res) => {
         res.status(500).json({ message: 'Failed to update delivery status' });
     }
 };
+
 
 

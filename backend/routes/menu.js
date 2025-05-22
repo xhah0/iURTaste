@@ -11,7 +11,9 @@ const router = express.Router();
 
 // Routes for restaurant-specific menu items
 router.post('/:restaurantId', protect, createMenuItem);
-router.get('/:restaurantId', protect, getMenuItemsForRestaurant);
+// router.get('/:restaurantId', protect, getMenuItemsForRestaurant);
+router.get('/:restaurantId', getMenuItemsForRestaurant);
+
 router.put('/:restaurantId/menu/:menuItemId', protect, updateMenuItem);
 router.delete('/:restaurantId/menu/:menuItemId', protect, deleteMenuItem);
 
