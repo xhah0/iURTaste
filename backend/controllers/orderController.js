@@ -5,54 +5,6 @@ const { sendPushNotification } = require('../utils/notification'); // Import the
 const Cart = require('../models/Cart');
 const { clearCart } = require('./cartController');
 
-// exports.createOrder = async (req, res) => {
-//     const { restaurantId, items, deliveryAddress } = req.body;
-//     const customerId = req.user._id;
-//
-//     try {
-//         const restaurant = await Restaurant.findById(restaurantId);
-//
-//         if (!restaurant) {
-//             return res.status(404).json({ message: 'Restaurant not found' });
-//         }
-//
-//         if (!['cod', 'card'].includes(paymentMethod)) {
-//             return res.status(400).json({ message: 'Invalid payment method' });
-//         }
-//
-//         // Calculate total price
-//         let totalAmount = 0;
-//         const orderItems = [];
-//         for (let item of items) {
-//             const menuItem = await MenuItem.findById(item.menuItemId);
-//             if (!menuItem) {
-//                 return res.status(404).json({ message: `Menu item ${item.menuItemId} not found` });
-//             }
-//
-//             const totalPrice = menuItem.price * item.quantity;
-//             totalAmount += totalPrice;
-//             orderItems.push({
-//                 menuItem: menuItem._id,
-//                 quantity: item.quantity,
-//                 totalPrice
-//             });
-//         }
-//
-//         const newOrder = new Order({
-//             customer: customerId,
-//             restaurant: restaurantId,
-//             items: orderItems,
-//             deliveryAddress,
-//             totalAmount
-//         });
-//
-//         await newOrder.save();
-//         res.status(201).json(newOrder);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Failed to create order' });
-//     }
-// };
 
 exports.createOrder = async (req, res) => {
     const { restaurantId, items, deliveryAddress, paymentMethod } = req.body;
@@ -103,30 +55,6 @@ exports.getOrdersForCustomer = async (req, res) => {
     }
 };
 
-// exports.updateOrderStatus = async (req, res) => {
-//     const { orderId, status } = req.body;
-//
-//     try {
-//         const order = await Order.findById(orderId);
-//
-//         if (!order) {
-//             return res.status(404).json({ message: 'Order not found' });
-//         }
-//
-//         if (order.restaurant.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-//             return res.status(403).json({ message: 'Not authorized to update this order' });
-//         }
-//
-//         order.status = status;
-//         await order.save();
-//         res.status(200).json(order);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Failed to update order status' });
-//     }
-// };
-
-// Add this inside the updateOrderStatus function
 
 exports.updateOrderStatus = async (req, res) => {
     const { orderId, status } = req.body;
