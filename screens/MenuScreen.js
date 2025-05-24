@@ -792,6 +792,8 @@
 //         color: "#659561",
 //     },
 // });
+
+
 import React, { useState, useEffect } from "react";
 import {
     View,
@@ -868,6 +870,14 @@ const MenuScreen = () => {
         }
     };
 
+    // useEffect(() => {
+    //     const clearCart = async () => {
+    //         await AsyncStorage.removeItem('cart');
+    //     };
+    //     clearCart();
+    // }, []);
+
+
     useEffect(() => {
         fetchMenuItems();
         loadCart();
@@ -877,13 +887,40 @@ const MenuScreen = () => {
         saveCart(cart);
     }, [cart]);
 
+    // const addToCart = (item) => {
+    //     const updatedCart = {
+    //         ...cart,
+    //         [item._id]: { ...item, quantity: (cart[item._id]?.quantity || 0) + 1 },
+    //     };
+    //     setCart(updatedCart);
+    // };
     const addToCart = (item) => {
         const updatedCart = {
             ...cart,
-            [item._id]: { ...item, quantity: (cart[item._id]?.quantity || 0) + 1 },
+            [item._id]: { ...item, restaurantId, quantity: (cart[item._id]?.quantity || 0) + 1 },
         };
         setCart(updatedCart);
     };
+
+    // const addToCart = (item) => {
+    //     // Check if cart has items and if they belong to a different restaurant
+    //     const existingRestaurantIds = new Set(Object.values(cart).map(i => i.restaurantId));
+    //     if (existingRestaurantIds.size > 0 && !existingRestaurantIds.has(restaurantId)) {
+    //         Alert.alert(
+    //             "Different Restaurant",
+    //             "You already have items from another restaurant in your cart. Please checkout or clear your cart first."
+    //         );
+    //         return;
+    //     }
+    //
+    //     const updatedCart = {
+    //         ...cart,
+    //         [item._id]: { ...item, restaurantId, quantity: (cart[item._id]?.quantity || 0) + 1 },
+    //     };
+    //     setCart(updatedCart);
+    // };
+
+
 
     const removeFromCart = (itemId) => {
         if (!cart[itemId]) return;
@@ -948,9 +985,19 @@ const MenuScreen = () => {
         }
     };
 
-    const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+    // const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = Object.values(cart).reduce(
+        (sum, item) => sum + Number(item.quantity || 0),
+        0
+    );
+
+
+    // const totalPrice = Object.values(cart)
+    //     .reduce((sum, item) => sum + item.price * item.quantity, 0)
+    //     .toFixed(2);
+
     const totalPrice = Object.values(cart)
-        .reduce((sum, item) => sum + item.price * item.quantity, 0)
+        .reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0), 0)
         .toFixed(2);
 
     if (loading || syncing) {
@@ -964,6 +1011,8 @@ const MenuScreen = () => {
             </SafeAreaView>
         );
     }
+    console.log("Total items in cart:", totalItems);
+
 
     return (
         <SafeAreaView style={styles.container}>

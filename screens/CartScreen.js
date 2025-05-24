@@ -40,6 +40,7 @@ const CartScreen = () => {
                     price: item.menuItem.price,
                     image: item.menuItem.image || null,
                     quantity: item.quantity,
+                    restaurantId: item.menuItem.restaurantId || item.menuItem.restaurant?._id || null,
                 }));
                 setCartItems(mappedItems);
             } else {
@@ -242,7 +243,7 @@ const CartScreen = () => {
             const paymentMethod = selectedPayment === "card" ? "card" : "cod";
 
             const items = cartItems.map(item => ({
-                menuItemId: item._id,  // use _id here (not id)
+                menuItemId: item.id,  // use _id here (not id)
                 quantity: item.quantity,
             }));
 
