@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="a lot of updates in frontend">
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="menu screen fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/cartController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/cartController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/orderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/order.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CartScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/MenuScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MenuScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DeliveryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DeliveryScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +119,7 @@
       <workItem from="1746996557384" duration="6609000" />
       <workItem from="1747871351832" duration="4409000" />
       <workItem from="1747897914504" duration="10761000" />
-      <workItem from="1748106436573" duration="4413000" />
+      <workItem from="1748106436573" duration="9542000" />
     </task>
     <task id="LOCAL-00001" summary="Cant remember what push, just know that its the frontend one">
       <option name="closed" value="true" />
@@ -173,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748044707664</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="menu screen fixed">
+      <option name="closed" value="true" />
+      <created>1748112785321</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748112785322</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +197,7 @@
     <MESSAGE value="expo update" />
     <MESSAGE value="expo update last" />
     <MESSAGE value="a lot of updates in frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="a lot of updates in frontend" />
+    <MESSAGE value="menu screen fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu screen fixed" />
   </component>
 </project>

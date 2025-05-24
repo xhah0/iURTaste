@@ -1,6 +1,6 @@
 const express = require('express');
 const { protect } = require('../middleware/auth');
-const { createOrder, getOrdersForCustomer, updateOrderStatus, getUserOrders} = require('../controllers/orderController');
+const { createOrder, getOrdersForCustomer, updateOrderStatus, getUserOrders, getOrderById} = require('../controllers/orderController');
 const { checkout } = require('../controllers/orderController');
 const { getRestaurantOrders } = require('../controllers/orderController');
 const { getDeliveryOrders } = require('../controllers/orderController');
@@ -14,6 +14,9 @@ router.get('/', protect, getOrdersForCustomer); // Get customer orders
 
 // Admin / Restaurant Order Routes
 router.put('/update-status', protect, updateOrderStatus); // Update order status
+
+
+router.get('/:orderId', protect, getOrderById);
 
 
 router.post('/checkout', protect, checkout);

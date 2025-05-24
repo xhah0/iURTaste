@@ -1,31 +1,6 @@
 const Cart = require('../models/Cart');
 const MenuItem = require('../models/MenuItem');
 
-exports.addToCart = async (req, res) => {
-    const { menuItemId, quantity } = req.body;
-
-    try {
-        let cart = await Cart.findOne({ user: req.user._id });
-
-        if (!cart) {
-            cart = new Cart({ user: req.user._id, items: [] });
-        }
-
-        const existingItem = cart.items.find(item => item.menuItem.toString() === menuItemId);
-
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            cart.items.push({ menuItem: menuItemId, quantity });
-        }
-
-        await cart.save();
-        res.status(200).json(cart);
-    } catch (err) {
-        res.status(500).json({ message: 'Failed to add to cart' });
-    }
-};
-//
 // exports.addToCart = async (req, res) => {
 //     const { menuItemId, quantity } = req.body;
 //
@@ -45,19 +20,44 @@ exports.addToCart = async (req, res) => {
 //         }
 //
 //         await cart.save();
-//
-//         // Repopulate menuItem and nested restaurant
-//         const populatedCart = await Cart.findOne({ user: req.user._id }).populate({
-//             path: 'items.menuItem',
-//             populate: { path: 'restaurant', select: '_id name' }
-//         });
-//
-//         res.status(200).json(populatedCart);
+//         res.status(200).json(cart);
 //     } catch (err) {
-//         console.error('Add to cart error:', err);
 //         res.status(500).json({ message: 'Failed to add to cart' });
 //     }
 // };
+
+exports.addToCart = async (req, res) => {
+    const { menuItemId, quantity } = req.body;
+
+    try {
+        let cart = await Cart.findOne({ user: req.user._id });
+
+        if (!cart) {
+            cart = new Cart({ user: req.user._id, items: [] });
+        }
+
+        const existingItem = cart.items.find(item => item.menuItem.toString() === menuItemId);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.items.push({ menuItem: menuItemId, quantity });
+        }
+
+        await cart.save();
+
+        // Repopulate menuItem and nested restaurant
+        const populatedCart = await Cart.findOne({ user: req.user._id }).populate({
+            path: 'items.menuItem',
+            populate: { path: 'restaurant', select: '_id name' }
+        });
+
+        res.status(200).json(populatedCart);
+    } catch (err) {
+        console.error('Add to cart error:', err);
+        res.status(500).json({ message: 'Failed to add to cart' });
+    }
+};
 
 
 exports.getCart = async (req, res) => {
@@ -91,6 +91,17 @@ exports.clearCart = async (userId) => {
         console.error('Failed to clear cart:', err);
     }
 };
+
+exports.clearCartRoute = async (req, res) => {
+    try {
+        await Cart.findOneAndUpdate({ user: req.user._id }, { items: [] });
+        res.status(200).json({ message: 'Cart cleared successfully' });
+    } catch (err) {
+        console.error('Failed to clear cart:', err);
+        res.status(500).json({ message: 'Failed to clear cart' });
+    }
+};
+
 
 exports.syncCart = async (req, res) => {
     const { items } = req.body; // items = [{ menuItemId, quantity }, ...]

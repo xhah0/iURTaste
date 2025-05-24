@@ -40,7 +40,9 @@ const CartScreen = () => {
                     price: item.menuItem.price,
                     image: item.menuItem.image || null,
                     quantity: item.quantity,
-                    restaurantId: item.menuItem.restaurantId || item.menuItem.restaurant?._id || null,
+                    restaurantId: typeof item.menuItem.restaurant === 'object'
+                        ? item.menuItem.restaurant._id
+                        : item.menuItem.restaurant,
                 }));
                 setCartItems(mappedItems);
             } else {
@@ -76,6 +78,12 @@ const CartScreen = () => {
             return;
         }
 
+        setCartItems((prevItems) =>
+            prevItems.map((i) =>
+                i.id === productId ? { ...i, quantity: newQuantity } : i
+            )
+        );
+
         setUpdatingItemId(productId);
         try {
             await api.post(`${API_URL}/api/cart/add`, {
@@ -85,6 +93,12 @@ const CartScreen = () => {
             await fetchCart();
         } catch (error) {
             Alert.alert("Error", error.response?.data?.message || "Failed to update cart");
+
+            setCartItems((prevItems) =>
+                prevItems.map((i) =>
+                    i.id === productId ? { ...i, quantity: item.quantity } : i
+                )
+            );
         } finally {
             setUpdatingItemId(null);
         }
@@ -247,7 +261,7 @@ const CartScreen = () => {
                 quantity: item.quantity,
             }));
 
-            const response = await api.post(`${API_URL}/api/order/`, {
+            const response = await api.post(`${API_URL}/api/orders/`, {
                 restaurantId,
                 items,
                 deliveryAddress,

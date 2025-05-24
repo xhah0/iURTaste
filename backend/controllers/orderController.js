@@ -35,6 +35,8 @@ exports.createOrder = async (req, res) => {
             deliveryAddress,
             paymentMethod,
             totalAmount,
+            status: 'pending',
+            createdAt: new Date(),
         });
 
         await newOrder.save();
@@ -240,4 +242,31 @@ exports.updateDeliveryStatus = async (req, res) => {
 };
 
 
+exports.getOrderById = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.orderId)
+            .populate('customer', 'name email')
+            .populate('restaurant', 'name location')
+            .populate('items.menuItem');
+
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        // Only allow relevant roles to access this order
+        if (
+            order.customer._id.toString() !== req.user._id.toString() &&
+            order.restaurant._id.toString() !== req.user._id.toString() &&
+            (order.deliveryPerson && order.deliveryPerson.toString() !== req.user._id.toString()) &&
+            req.user.role !== 'admin'
+        ) {
+            return res.status(403).json({ message: 'You are not authorized to view this order' });
+        }
+
+        res.status(200).json(order);
+    } catch (error) {
+        console.error('Error fetching order by ID:', error);
+        res.status(500).json({ message: 'Failed to retrieve order' });
+    }
+};
 
