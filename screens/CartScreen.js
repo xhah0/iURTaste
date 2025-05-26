@@ -234,6 +234,69 @@ const CartScreen = () => {
     //     }
     // };
 
+    // const createAndNavigateOrder = async () => {
+    //     if (cartItems.length === 0) {
+    //         Alert.alert("Cart is empty", "Add some items to place an order.");
+    //         return;
+    //     }
+    //
+    //     try {
+    //         setLoading(true);
+    //
+    //         const deliveryAddress = "Some Address"; // Replace with real logic
+    //
+    //         console.log("Cart Items:", cartItems);
+    //
+    //         const restaurantId = cartItems[0]?.restaurantId;
+    //         if (!restaurantId) {
+    //             Alert.alert("Error", "Restaurant information is missing.");
+    //             setLoading(false);
+    //             return;
+    //         }
+    //
+    //         const paymentMethod = selectedPayment === "card" ? "card" : "cod";
+    //
+    //         const items = cartItems.map(item => ({
+    //             menuItemId: item.id,  // use _id here (not id)
+    //             quantity: item.quantity,
+    //         }));
+    //
+    //         const response = await api.post(`${API_URL}/api/orders/`, {
+    //             restaurantId,
+    //             items,
+    //             deliveryAddress,
+    //             paymentMethod,
+    //         });
+    //
+    //         console.log("Order Payload:", {
+    //             restaurantId,
+    //             items,
+    //             deliveryAddress,
+    //             paymentMethod,
+    //         });
+    //
+    //         await api.post(`${API_URL}/api/cart/clear`);
+    //         await AsyncStorage.removeItem("cart");
+    //         setCartItems([]);
+    //         setLoading(false);
+    //
+    //         navigation.reset({
+    //             index: 1,
+    //             routes: [
+    //                 { name: "MainScreen" },
+    //                 { name: "DeliveryScreen", params: { order: response.data } },
+    //             ],
+    //         });
+    //
+    //     } catch (error) {
+    //         setLoading(false);
+    //         console.error("Order creation error:", error.response?.data || error.message);
+    //         Alert.alert("Order Failed", "Could not place the order. Please try again.");
+    //     }
+    // };
+
+
+
     const createAndNavigateOrder = async () => {
         if (cartItems.length === 0) {
             Alert.alert("Cart is empty", "Add some items to place an order.");
@@ -245,8 +308,6 @@ const CartScreen = () => {
 
             const deliveryAddress = "Some Address"; // Replace with real logic
 
-            console.log("Cart Items:", cartItems);
-
             const restaurantId = cartItems[0]?.restaurantId;
             if (!restaurantId) {
                 Alert.alert("Error", "Restaurant information is missing.");
@@ -257,7 +318,7 @@ const CartScreen = () => {
             const paymentMethod = selectedPayment === "card" ? "card" : "cod";
 
             const items = cartItems.map(item => ({
-                menuItemId: item.id,  // use _id here (not id)
+                menuItemId: item.id,
                 quantity: item.quantity,
             }));
 
@@ -271,15 +332,31 @@ const CartScreen = () => {
             await api.post(`${API_URL}/api/cart/clear`);
             await AsyncStorage.removeItem("cart");
             setCartItems([]);
-            setLoading(false);
+            setLoading(false); // Ensure loading is set to false
 
-            navigation.reset({
-                index: 1,
-                routes: [
-                    { name: "MainScreen" },
-                    { name: "DeliveryScreen", params: { order: response.data } },
-                ],
-            });
+            // Use setTimeout to allow state update to take effect before navigation
+            setTimeout(() => {
+                // navigation.reset({
+                //     index: 1,
+                //     routes: [
+                //         { name: "MainScreen" },
+                //         { name: "DeliveryScreen", params: { order: response.data } },
+                //     ],
+                // });
+                // In createAndNavigateOrder (fixed)
+                navigation.reset({
+                    index: 0,
+                    routes: [
+                        { name: "MainScreen" },
+                        {
+                            name: "DeliveryScreen",
+                            params: {
+                                orderId: response.data._id // ✅ Pass only the order ID
+                            }
+                        },
+                    ],
+                });
+            }, 0);
 
         } catch (error) {
             setLoading(false);
@@ -287,7 +364,6 @@ const CartScreen = () => {
             Alert.alert("Order Failed", "Could not place the order. Please try again.");
         }
     };
-
 
     // Handle Stripe card payment
     const handleStripePayment = async () => {
