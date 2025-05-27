@@ -12,8 +12,6 @@ const paymentRoutes = require('./routes/payment');
 const admin = require('firebase-admin');
 const serviceAccount = require('./iurtaste-firebase-admin.json');
 
-
-
 dotenv.config();
 const app = express();
 
@@ -27,9 +25,9 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/delivery', deliveryRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/cart', require('./routes/cart'));
-app.use('/api/orders', require('./routes/order'));
 
-
+const userRoutes = require('./routes/user');
+app.use('/api/users', userRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -41,165 +39,6 @@ mongoose.connect(process.env.MONGO_URI, {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => console.log(`Server running on http://0.0.0.0:${PORT}`));
 
-
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
 });
-
-const userRoutes = require('./routes/user');
-app.use('/api/users', userRoutes);
-
-app.use('/api/users', require('./routes/user'));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const dotenv = require('dotenv');
-// const http = require('http'); // Required for WebSockets
-// const socketIo = require('socket.io');
-//
-// dotenv.config();
-//
-// const app = express();
-// const server = http.createServer(app);
-// const io = socketIo(server, { cors: { origin: "*" } }); // WebSocket CORS settings
-//
-// // Enable CORS for all routes
-// app.use(cors()); // This will allow requests from all origins
-//
-// // OR enable CORS with custom configuration (to allow only specific origins)
-// const corsOptions = {
-//     origin: `${process.env.API_URL}:8081 `, // Replace with your frontend URL
-//     methods: ['GET', 'POST'],
-//     allowedHeaders: ['Content-Type'],
-// };
-// app.use(cors(corsOptions));
-//
-// // Other middlewares and routes
-// app.use(express.json()); // For parsing application/json
-// app.use('/api/auth', require('./routes/auth')); // Your authentication routes
-// //app.use('/api/user', require('./routes/userRoutes'));
-//
-// // Start MongoDB connection
-// mongoose.connect(process.env.MONGO_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// })
-//     .then(() => console.log('MongoDB Connected'))
-//     .catch(err => console.log(err));
-//
-// // Test route
-// app.get('/', (req, res) => {
-//     res.send('Welcome to the Food Delivery API');
-// });
-//
-// // WebSocket connection (optional, if you use it)
-// io.on('connection', (socket) => {
-//     console.log('A user connected:', socket.id);
-//     socket.on('disconnect', () => {
-//         console.log('User disconnected:', socket.id);
-//     });
-// });
-//
-// // Start server
-// const PORT = process.env.PORT || 5000;
-// server.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-// });
