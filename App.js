@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StripeProvider } from '@stripe/stripe-react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {StripeProvider} from '@stripe/stripe-react-native';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import MainScreen from './screens/MainScreen';
@@ -13,7 +13,10 @@ import SettingsScreen from './screens/SettingsScreen';
 import DeliveryScreen from './screens/DeliveryScreen'; // Ensure this import is correct
 import EditProfileScreen from './screens/EditProfileScreen';
 import LocationScreen from './screens/LocationScreen';
+import MyOrdersScreen from "./screens/MyOrdersScreen";
 import {AuthProvider} from './contexts/AuthContext';
+
+import OrderDetailScreen from './screens/OrderDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,64 +28,75 @@ export default function App() {
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="LoginScreen">
                         <Stack.Screen
-                        name="LoginScreen"
-                        component={LoginScreen}
-                        options={{ headerShown: false, gestureEnabled: false }}
-                    />
-                    <Stack.Screen
-                        name="SignupScreen"
-                        component={SignupScreen}
-                        options={{ headerShown: false, gestureEnabled: false }}
-                    />
-                    <Stack.Screen
-                        name="MainScreen"
-                        component={MainScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="ProfileScreen"
-                        component={ProfileScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="FavoritesScreen"
-                        component={FavoritesScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="CartScreen"
-                        component={CartScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="MenuScreen"
-                        component={MenuScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="SettingsScreen"
-                        component={SettingsScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="DeliveryScreen"
-                        component={DeliveryScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="EditProfileScreen"
-                        component={EditProfileScreen}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="LocationScreen"
-                        component={LocationScreen}
-                        options={{ headerShown: false }}
-                    />
+                            name="LoginScreen"
+                            component={LoginScreen}
+                            options={{headerShown: false, gestureEnabled: false}}
+                        />
+                        <Stack.Screen
+                            name="SignupScreen"
+                            component={SignupScreen}
+                            options={{headerShown: false, gestureEnabled: false}}
+                        />
+                        <Stack.Screen
+                            name="MainScreen"
+                            component={MainScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="ProfileScreen"
+                            component={ProfileScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="FavoritesScreen"
+                            component={FavoritesScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="CartScreen"
+                            component={CartScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="MenuScreen"
+                            component={MenuScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="SettingsScreen"
+                            component={SettingsScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="DeliveryScreen"
+                            component={DeliveryScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="MyOrdersScreen"
+                            component={MyOrdersScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="EditProfileScreen"
+                            component={EditProfileScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="LocationScreen"
+                            component={LocationScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="OrderDetail"
+                            component={OrderDetailScreen}
+                            options={{headerShown: false}}
+                        />
 
-                </Stack.Navigator>
-            </NavigationContainer>
-        </StripeProvider>
+
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </StripeProvider>
         </AuthProvider>
     );
 }

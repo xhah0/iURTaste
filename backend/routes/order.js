@@ -15,12 +15,12 @@ router.get('/', protect, getOrdersForCustomer); // Get customer orders
 // Admin / Restaurant Order Routes
 router.put('/update-status', protect, updateOrderStatus); // Update order status
 
+router.get('/my-orders', protect, getUserOrders);
 
 router.get('/:orderId', protect, getOrderById);
 
 
 router.post('/checkout', protect, checkout);
-router.get('/my-orders', protect, getUserOrders);
 router.get('/restaurant-orders', protect, getRestaurantOrders);
 router.get('/delivery-orders', protect, getDeliveryOrders);
 router.put('/:orderId/delivery-status', protect, updateDeliveryStatus);

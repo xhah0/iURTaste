@@ -315,7 +315,7 @@ const MainScreen = () => {
     const navigateToProfile = () => { closeMenu(); navigation.navigate('ProfileScreen'); };
     const navigateToFavorites = () => { closeMenu(); navigation.navigate('FavoritesScreen'); };
     const navigateToCart = () => { closeMenu(); navigation.navigate('CartScreen'); };
-    const navigateToDelivery = () => { closeMenu(); navigation.navigate('DeliveryScreen'); };
+    const navigateToMyOrder = () => { closeMenu(); navigation.navigate('MyOrdersScreen'); };
     const navigateToLocation = () => { closeMenu(); navigation.navigate('LocationScreen'); };
 
     return (
@@ -341,7 +341,7 @@ const MainScreen = () => {
                         <TouchableOpacity style={styles.menuItem} onPress={navigateToCart}>
                             <Text style={styles.menuText}>Cart</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.menuItem} onPress={navigateToDelivery}>
+                        <TouchableOpacity style={styles.menuItem} onPress={navigateToMyOrder}>
                             <Text style={styles.menuText}>Delivery</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.menuItem} onPress={navigateToLocation}>
