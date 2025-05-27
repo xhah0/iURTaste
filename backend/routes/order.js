@@ -1,25 +1,28 @@
 const express = require('express');
 const { protect } = require('../middleware/auth');
-const { createOrder, getOrdersForCustomer, updateOrderStatus, getUserOrders} = require('../controllers/orderController');
-const { checkout } = require('../controllers/orderController');
-const { getRestaurantOrders } = require('../controllers/orderController');
-const { getDeliveryOrders } = require('../controllers/orderController');
-const { updateDeliveryStatus } = require('../controllers/orderController');
-
+const Order = require('../models/Order');
 const router = express.Router();
 
-// Customer Order Routes
-router.post('/', protect, createOrder); // Place an order
-router.get('/', protect, getOrdersForCustomer); // Get customer orders
+router.post('/', protect, async (req, res) => {
+    const { items, totalAmount } = req.body;
 
-// Admin / Restaurant Order Routes
-router.put('/update-status', protect, updateOrderStatus); // Update order status
+    try {
+        const order = new Order({
+            customer: req.user._id,
+            items: items.map(item => ({
+                menuItem: item._id || item.id, // adapt to your actual IDs
+                quantity: item.quantity
+            })),
+            totalAmount,
+            status: 'pending'
+        });
 
-
-router.post('/checkout', protect, checkout);
-router.get('/my-orders', protect, getUserOrders);
-router.get('/restaurant-orders', protect, getRestaurantOrders);
-router.get('/delivery-orders', protect, getDeliveryOrders);
-router.put('/:orderId/delivery-status', protect, updateDeliveryStatus);
+        const savedOrder = await order.save();
+        res.status(201).json(savedOrder);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to save order' });
+    }
+});
 
 module.exports = router;

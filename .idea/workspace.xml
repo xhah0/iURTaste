@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="a lot of updates in frontend">
+    <list default="true" id="a5e094a4-a595-44d8-a1b8-169bcdcd65e5" name="Changes" comment="expo update last">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CartScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/MenuScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MenuScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,26 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.14.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.14&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/OneDrive/Desktop/githubiurtaste/iURTaste/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\OneDrive\\Desktop\\githubiurtaste\\iURTaste\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "javascript.nodejs.core.library.configured.version": "22.14.0",
+    "javascript.nodejs.core.library.typings.version": "22.13.14",
+    "last_opened_file_path": "C:/Users/Admin/OneDrive/Desktop/githubiurtaste/iURTaste/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\frens\\OneDrive\\Desktop\\iURTasteProject\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\OneDrive\Desktop\githubiurtaste\iURTaste\backend" />
@@ -114,8 +114,6 @@
       <workItem from="1746995962924" duration="308000" />
       <workItem from="1746996557384" duration="6609000" />
       <workItem from="1747871351832" duration="4409000" />
-      <workItem from="1747897914504" duration="10761000" />
-      <workItem from="1748106436573" duration="4413000" />
     </task>
     <task id="LOCAL-00001" summary="Cant remember what push, just know that its the frontend one">
       <option name="closed" value="true" />
@@ -157,23 +155,7 @@
       <option name="project" value="LOCAL" />
       <updated>1746968797947</updated>
     </task>
-    <task id="LOCAL-00006" summary="a lot of updates in frontend">
-      <option name="closed" value="true" />
-      <created>1747898281477</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1747898281477</updated>
-    </task>
-    <task id="LOCAL-00007" summary="a lot of updates in frontend">
-      <option name="closed" value="true" />
-      <created>1748044707664</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1748044707664</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +166,6 @@
     <MESSAGE value="back end done" />
     <MESSAGE value="expo update" />
     <MESSAGE value="expo update last" />
-    <MESSAGE value="a lot of updates in frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="a lot of updates in frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="expo update last" />
   </component>
 </project>
