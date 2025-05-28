@@ -10,13 +10,16 @@ import FavoritesScreen from './screens/FavoritesScreen';
 import CartScreen from './screens/CartScreen';
 import MenuScreen from './screens/MenuScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import DeliveryScreen from './screens/DeliveryScreen'; // Ensure this import is correct
+import DeliveryScreen from './screens/DeliveryScreen';
 import EditProfileScreen from './screens/EditProfileScreen';
 import LocationScreen from './screens/LocationScreen';
 import MyOrdersScreen from "./screens/MyOrdersScreen";
-import {AuthProvider} from './contexts/AuthContext';
-
 import OrderDetailScreen from './screens/OrderDetailScreen';
+import AdminScreen from './screens/AdminScreen';
+import DeliveryDashboardScreen from './screens/DeliveryDashboardScreen';
+import RestaurantScreen from './screens/RestaurantScreen';
+
+import {AuthProvider} from './contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -78,6 +81,27 @@ export default function App() {
                             options={{headerShown: false}}
                         />
                         <Stack.Screen
+                            name="OrderDetail"
+                            component={OrderDetailScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="AdminScreen"
+                            component={AdminScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="DeliveryDashboardScreen"
+                            component={DeliveryDashboardScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="RestaurantScreen"
+                            component={RestaurantScreen}
+                            options={{headerShown: false}}
+                        />
+
+                        <Stack.Screen
                             name="EditProfileScreen"
                             component={EditProfileScreen}
                             options={{headerShown: false}}
@@ -87,13 +111,6 @@ export default function App() {
                             component={LocationScreen}
                             options={{headerShown: false}}
                         />
-                        <Stack.Screen
-                            name="OrderDetail"
-                            component={OrderDetailScreen}
-                            options={{headerShown: false}}
-                        />
-
-
                     </Stack.Navigator>
                 </NavigationContainer>
             </StripeProvider>
